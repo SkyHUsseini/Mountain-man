@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mountain.man</title>
+  </head>
+  <body>
+    <section class="book-section">
+      <header>
+        <div class="container">
+          <nav class="primary-navigation fs-nav text-dark">
+            <div class="logo fw-bold">
+              <a href="index.html">mountain.man</a>
+            </div>
+            <button aria-controls="nav-links" class="nav-toggle-btn">
+              <img src="./images/menu-black.svg" alt="" />
+            </button>
+            <ul role="list" class="nav-links">
+              <li class="nav-link"><a href="index.html">Home</a></li>
+              <li class="nav-link"><a href="">Tours</a></li>
+              <li class="nav-link"><a href="">Advices</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="landing-content">
+          <div class="container">
+            <div class="landing__text">
+              <h1 class="fs-heading text-darkGreen">Book Now</h1>
+              <p class="fs-paragraph text-darkGreen">
+                To book a tour please fill in the fields below. Our manager will
+                contact you within 15 minutes from submission.
+              </p>
+            </div>
+            <form class="book-form">
+              <div class="row-1">
+                <input
+                  class="form__input"
+                  required
+                  type="text"
+                  placeholder="name"
+                />
+                <input
+                  class="form__input"
+                  required
+                  type="number"
+                  placeholder="901-000-000"
+                />
+              </div>
+              <div class="row-1">
+                <input
+                  class="form__input"
+                  required
+                  type="date"
+                  placeholder="date"
+                />
+                <select class="form__input" required name="" id="">
+                  <option value="">Select</option>
+                  <option value="">Hoverla</option>
+                  <option value="">Green mountains</option>
+                  <option value="">Camping</option>
+                </select>
+              </div>
+            </form>
+            <button class="blue-btn btn-padding">Book now</button>
+          </div>
+        </div>
+      </header>
+    </section>
+    <script
+      src="https://kit.fontawesome.com/7947351a45.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
