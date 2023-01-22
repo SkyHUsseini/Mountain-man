@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --clr-body: #fff;
+  --clr-dark: #01060e;
+  --clr-blue: #2c70c6;
+  --clr-purple: #bac0c7;
+  --clr-green: #bde4bc;
+  --clr-darkGreen: #01180f;
+
+  --ff-primary: "Poppins", sans-serif;
+
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 900;
+
+  /*size*/
+  --fs-200: 0.5rem;
+  --fs-300: 0.75rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2.5rem;
+  --fs-800: 4.5rem;
+
+  --fs-sm: var(--fs-300);
+  --fs-body: var(--fs-400);
+  --fs-paragraph: var(--fs-400);
+  --fs-nav: var(--fs-400);
+  --fs-paragraph-heading: var(--fs-500);
+  --fs-heading: var(--fs-700);
+
+  --size-100: 0.25rem;
+  --size-200: 0.5rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.5rem;
+  --size-700: 2rem;
+  --size-800: 2.5rem;
+  --size-900: 3rem;
+}
+
+@media (min-width: 50em) {
+  :root {
+    --fs-sm: var(--fs-300);
+
+    --fs-paragraph: var(--fs-500);
+    --fs-nav: var(--fs-500);
+    --fs-paragraph-heading: var(--fs-600);
+    --fs-heading: var(--fs-800);
+  }
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  scroll-behavior: smooth;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--ff-primary);
+  background-color: var(--clr-dark);
+  /* background-image: url("./images/body-bg.jpg"); */
+  /* background-repeat: repeat-x; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  /* html:focus-within {
+    scroll-behavior: auto;
+  } */
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: smooth !important;
+  }
+}
+/*General styling*/
+.container {
+  --max-width: 1450px;
+  --padding: 2rem;
+
+  width: min(var(--max-width), 100%);
+  padding: var(--padding);
+}
+.even-col {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+/*TODO: set children*/
+@media (max-width: 50em) {
+  .even-col-switch {
+    display: grid;
+    grid-template-areas:
+      "one"
+      "two";
+  }
+  .grid-switch:nth-child(1) {
+    grid-area: two;
+  }
+  .grid-switch:nth-child(2) {
+    grid-area: one;
+  }
+}
+
+@media (min-width: 50em) {
+  .even-col,
+  .even-col-switch {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* nav styling */
+.logo {
+  cursor: pointer;
+  font-weight: bolder;
+}
+.primary-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 50em) {
+  .nav-links {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 100%, 0.9);
+    color: var(--clr-darkGreen);
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 40%;
+    padding: 8rem 2rem 0;
+    z-index: 999;
+    overflow-x: hidden;
+    transform: translateX(100%);
+    transition: all 350ms ease-out;
+  }
+  .nav-links[visible] {
+    transform: translateX(0%);
+  }
+  .nav-links li {
+    padding: 2rem 0;
+  }
+  @supports (backdrop-filter: blur(1rem)) {
+    .nav-links {
+      /* background-color: hsl(119, 43%, 82%, 0.5); */
+      background-color: hsl(0, 0%, 100%, 0.6);
+      backdrop-filter: blur(1rem);
+    }
+  }
+}
+.nav-links li:not(:last-child) {
+  padding-right: 1.5rem;
+}
+.nav-toggle-btn {
+  display: block;
+  width: 1.25rem;
+  aspect-ratio: 1;
+  z-index: 9999;
+}
+@media (min-width: 50em) {
+  .nav-toggle-btn {
+    display: none;
+  }
+}
+.btn-padding {
+  padding: 1rem 0 3rem;
+}
+.blue-btn {
+  background-color: var(--clr-blue);
+  color: var(--clr-body);
+  padding: 1rem 2rem;
+  transition: all 350ms ease-in-out;
+  cursor: pointer;
+}
+.blue-btn:hover {
+  background-color: var(--clr-green);
+  color: var(--clr-dark);
+}
+.landing__text {
+  max-width: 600px;
+  padding: 3rem 0;
+}
+.nav-link > a {
+  transition: all 350ms ease-out;
+}
+.nav-link > a:hover {
+  opacity: 0.5;
+}
+/* landing section */
+.landing-section {
+  height: 100vh;
+  background-image: url("./images/landing.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.landing-content {
+  padding-bottom: 10rem;
+}
+/* main */
+.content__text-wrapper {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem 1rem;
+  line-height: 2;
+}
+.content__img {
+  margin: auto;
+  padding: 1rem;
+  border-radius: 15px;
+}
+@media (min-width: 50em) {
+  .content__img {
+    padding: 3rem;
+  }
+}
+/* footer styling */
+.footer {
+  background-color: #01180f;
+  padding: 5rem 3rem;
+}
+.contact-icon {
+  width: 2rem;
+  aspect-ratio: 1;
+  padding-right: 1rem;
+}
+
+@media (min-width: 50em) {
+  .contact-icon {
+    width: 3rem;
+    aspect-ratio: 1;
+    padding-right: 1.5rem;
+  }
+}
+.contact-list li {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+.footer__nav-links li {
+  padding: 1rem 0;
+}
+@media (min-width: 50em) {
+  .footer-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .contact-list {
+    max-width: 400px;
+  }
+}
+/* advices page: similar to home */
+.advices-section {
+  height: 100vh;
+  background-image: url("./images/advices-page.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.bg-transparentWhite {
+  background-color: hsla(119, 43%, 82%, 0.3);
+  border-radius: 20px;
+  padding: 1rem;
+}
+/* book page */
+.book-section {
+  background-image: url("./images/book-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.book-form {
+  margin: 1rem 1rem 2rem 0;
+}
+@media (min-width: 50em) {
+  .book-form {
+    margin: 2rem 2rem 3rem 0;
+  }
+}
+.form__input {
+  border: 0;
+  padding: 1rem 2rem;
+  width: 250px;
+  color: #333;
+  margin: 1rem 1rem 1rem 0;
+}
+/* utility classes */
+
+/* text colors*/
+
+.text-body {
+  color: var(--clr-body);
+}
+.text-dark {
+  color: var(--clr-dark);
+}
+.text-blue {
+  color: var(--clr-blue);
+}
+.text-purple {
+  color: var(--clr-purple);
+}
+.text-green {
+  color: var(--clr-green);
+}
+.text-darkGreen {
+  color: var(--clr-darkGreen);
+}
+
+.ff-primary {
+  font-family: var(--ff-primary);
+}
+
+.fw-semi-bold {
+  font-weight: var(--fw-semi-bold);
+}
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+/* font size */
+
+.fs-sm {
+  font-size: var(--fs-sm);
+}
+.fs-body {
+  font-size: var(--fs-body);
+}
+.fs-nav {
+  font-size: var(--fs-nav);
+}
+.fs-paragraph {
+  font-size: var(--fs-paragraph);
+}
+.fs-paragraph-heading {
+  font-size: var(--fs-paragraph-heading);
+}
+.fs-heading {
+  font-size: var(--fs-heading);
+}
